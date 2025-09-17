@@ -108,7 +108,7 @@ p_list <- lapply(vars, function(v) {
 grid.arrange(grobs = p_list, ncol = 2)
 ```
 
-**Biểu đồ đường của các biến theo thời gian**  
+### Biểu đồ đường của các biến theo thời gian  
 ![Biểu đồ đường của các biến theo thời gian](plot/01_Desc_Line.svg)
 
 ---
@@ -133,7 +133,7 @@ hist_list <- lapply(vars, function(v) {
 grid.arrange(grobs = hist_list, ncol = 2)
 ```
 
-**Histogram và mật độ kernel của các biến**  
+### Histogram và mật độ kernel của các biến  
 ![Histogram và mật độ kernel của các biến](plot/02_Desc_Histo.svg)
 
 ---
@@ -153,7 +153,7 @@ qq_list <- lapply(vars, function(v) {
 grid.arrange(grobs = qq_list, ncol = 2)
 ```
 
-**Biểu đồ QQ của các biến**  
+### Biểu đồ QQ của các biến  
 ![Biểu đồ QQ của các biến](plot/03_Desc_QQ.svg)
 
 ---
@@ -243,12 +243,12 @@ acf(df$VNINDEX_R, main = "ACF of VNINDEX_R")
 pacf(df$VNINDEX_R, main = "PACF of VNINDEX_R")
 ```
 
-**Biểu đồ ACF của VNINDEX_R**  
+### Biểu đồ ACF của VNINDEX_R  
 ![Biểu đồ ACF của VNINDEX_R](plot/04_ACF.svg)
 
 <br />
 
-**Biểu đồ PACF của VNINDEX_R**  
+### Biểu đồ PACF của VNINDEX_R  
 ![Biểu đồ PACF của VNINDEX_R](plot/05_PACF.svg)
 
 ---
@@ -514,38 +514,38 @@ plotDiag(ms_model, "all", which = 2)
 plotDiag(ms_model, "all", which = 3)
 plotProb(ms_model, which = c(1:(k_optimal + 1)))
 ```
-**Biểu đồ conditional mean theo từng regime**  
+### Biểu đồ conditional mean theo từng regime  
 ![Biểu đồ conditional mean theo từng regime](plot/06_MS_ConMean.svg)  
 
 <br />
 
-**Biểu đồ residuals theo từng regime**  
+### Biểu đồ residuals theo từng regime  
 ![Biểu đồ residuals theo từng regime](plot/07_Resi_R1.svg)  
 ![Biểu đồ residuals theo từng regime](plot/07_Resi_R2.svg)  
 ![Biểu đồ residuals theo từng regime](plot/07_Resi_R3.svg)  
 
 <br />
 
-**Biểu đồ Q-Q theo từng regime**  
+### Biểu đồ Q-Q theo từng regime  
 ![Biểu đồ Q-Q theo từng regime](plot/08_QQ_R1.svg)  
 ![Biểu đồ Q-Q theo từng regime](plot/08_QQ_R2.svg)  
 ![Biểu đồ Q-Q theo từng regime](plot/08_QQ_R3.svg)  
 
 <br />
 
-**Biểu đồ ACF, PACF của phần dư và phần dư bình phương**  
+### Biểu đồ ACF, PACF của phần dư và phần dư bình phương  
 ![Biểu đồ ACF, PACF của phần dư và phần dư bình phương](plot/09_ACF_PACF_R1.svg)  
 ![Biểu đồ ACF, PACF của phần dư và phần dư bình phương](plot/09_ACF_PACF_R2.svg)  
 ![Biểu đồ ACF, PACF của phần dư và phần dư bình phương](plot/09_ACF_PACF_R3.svg)  
 
 <br />
 
-**Biểu đồ xác suất chuyển trạng thái filtered và smoothed theo từng regime**  
+### Biểu đồ xác suất chuyển trạng thái filtered và smoothed theo từng regime  
 ![Biểu đồ xác suất chuyển trạng thái filtered và smoothed theo từng regime](plot/10_MS_Prob.svg)  
 
 <br />
 
-**Biểu đồ gán regime từ mô hình**  
+### Biểu đồ gán regime từ mô hình  
 ![Biểu đồ gán regime từ mô hình](plot/18_Apdx_R1.svg)  
 ![Biểu đồ gán regime từ mô hình](plot/18_Apdx_R2.svg)  
 ![Biểu đồ gán regime từ mô hình](plot/18_Apdx_R3.svg)  
@@ -1291,27 +1291,27 @@ ggplot(ni_df, aes(x = z, y = h)) +
   theme_minimal(base_size = 14)
 ```
 
-**Biểu đồ chuỗi độ biến động có điều kiện (conditional volatility)**  
+### Biểu đồ chuỗi độ biến động có điều kiện (conditional volatility)  
 ![Biểu đồ chuỗi độ biến động có điều kiện (conditional volatility)](plot/11_EG_ConVol.svg)  
 
 <br />
 
-**Biểu đồ phần dư chuẩn hoá (standardized residuals)**  
+### Biểu đồ phần dư chuẩn hoá (standardized residuals)  
 ![Biểu đồ phần dư chuẩn hoá (standardized residuals)](plot/12_EG_StdRes.svg)  
 
 <br />
 
-**Biểu đồ Q-Q của phần dư chuẩn hóa**  
+### Biểu đồ Q-Q của phần dư chuẩn hóa  
 ![Biểu đồ Q-Q của phần dư chuẩn hóa](plot/13_EG_QQ.svg)  
 
 <br />
 
-**Biểu đồ histogram của phần dư chuẩn hóa**  
+### Biểu đồ histogram của phần dư chuẩn hóa  
 ![Biểu đồ histogram của phần dư chuẩn hóa](plot/14_EG_StdRes_Histo.svg)  
 
 <br />
 
-**Đường cong tác động thông tin (News Impact Curve)**  
+### Đường cong tác động thông tin (News Impact Curve)  
 ![Đường cong tác động thông tin (News Impact Curve)](plot/15_EG_NI.svg)  
 
 ---
@@ -1551,10 +1551,10 @@ combined_plot <- grid.arrange(grobs = plot_list, ncol = 2, top = title)
 print(combined_plot)
 ```
 
-**Biểu đồ hệ số hồi quy theo từng phân vị**  
+### Biểu đồ hệ số hồi quy theo từng phân vị  
 ![Biểu đồ hệ số hồi quy theo từng phân vị](plot/16_QR_Cof.svg)  
 
 <br />
 
-**Biểu đồ phân phối phần dư tại các phân vị**  
+### Biểu đồ phân phối phần dư tại các phân vị  
 ![Biểu đồ phân phối phần dư tại các phân vị](plot/17_QR_ResDist.svg)  
