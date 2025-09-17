@@ -75,7 +75,7 @@ desc_table <- sapply(df_clean[, c(
 desc_table <- t(round(desc_table, 4))
 desc_table
 ```
-
+**Output:**
 ```
 ##                    Mean         SD           Min          Max Skewness Kurtosis JB p-value
 ## VNINDEX_R        0.0001 1.3700e-02 -6.910000e-02 6.550000e-02  -0.4424   5.4897          0
@@ -108,7 +108,7 @@ p_list <- lapply(vars, function(v) {
 grid.arrange(grobs = p_list, ncol = 2)
 ```
 
-***Biểu đồ đường của các biến theo thời gian***  
+**Biểu đồ đường của các biến theo thời gian**  
 ![Biểu đồ đường của các biến theo thời gian](plot/01_Desc_Line.svg)
 
 ---
@@ -133,7 +133,7 @@ hist_list <- lapply(vars, function(v) {
 grid.arrange(grobs = hist_list, ncol = 2)
 ```
 
-***Histogram và mật độ kernel của các biến***  
+**Histogram và mật độ kernel của các biến**  
 ![Histogram và mật độ kernel của các biến](plot/02_Desc_Histo.svg)
 
 ---
@@ -153,7 +153,7 @@ qq_list <- lapply(vars, function(v) {
 grid.arrange(grobs = qq_list, ncol = 2)
 ```
 
-***Biểu đồ QQ của các biến***  
+**Biểu đồ QQ của các biến**  
 ![Biểu đồ QQ của các biến](plot/03_Desc_QQ.svg)
 
 ---
@@ -185,7 +185,7 @@ cat(
   )
 )
 ```
-
+**Output:**
 ```
 ## 	Augmented Dickey-Fuller Test
 ## 
@@ -243,10 +243,12 @@ acf(df$VNINDEX_R, main = "ACF of VNINDEX_R")
 pacf(df$VNINDEX_R, main = "PACF of VNINDEX_R")
 ```
 
-***Biểu đồ ACF của VNINDEX_R***  
+**Biểu đồ ACF của VNINDEX_R**  
 ![Biểu đồ ACF của VNINDEX_R](plot/04_ACF.svg)
-***
-***Biểu đồ PACF của VNINDEX_R***  
+
+<br />
+
+**Biểu đồ PACF của VNINDEX_R**  
 ![Biểu đồ PACF của VNINDEX_R](plot/05_PACF.svg)
 
 ---
@@ -258,7 +260,7 @@ df_clean[numeric_vars] <- scale(df_clean[numeric_vars])
 model_base <- lm(VNINDEX_R ~ SP500_R + USDVND_R + BRENT_R + LNVOL + NFI_VOL, data = df_clean)
 car::vif(model_base)
 ```
-
+**Output:**
 ```
 ##  SP500_R USDVND_R  BRENT_R    LNVOL  NFI_VOL 
 ## 1.117158 1.000623 1.116743 1.016780 1.016780
@@ -321,7 +323,7 @@ for (k in 2:3) {
   }
 }
 ```
-
+**Output:**
 ```
 ## Running model with k = 2 and p = 0 
 ##   -> Success: AIC = -28121.52 , BIC = -27943.09 , logLike = 14072.76 
@@ -348,7 +350,7 @@ p_optimal <- ms_results$p[1]
 
 cat("Best-fit model: MS(", k_optimal, ")-AR(", p_optimal, ")-X", sep = "")
 ```
-
+**Output:**
 ```
 ##   k p       AIC       BIC   logLik
 ## 1 3 2 -28332.67 -27975.81 14190.33
@@ -373,7 +375,7 @@ ms_model <- msmFit(
 )
 summary(ms_model)
 ```
-
+**Output:**
 ```
 ## Markov Switching Model
 ## 
@@ -490,7 +492,7 @@ sojourn_stats <- regime_blocks %>%
 
 print(sojourn_stats)
 ```
-
+**Output:**
 ```
 ## # A tibble: 3 × 7
 ##   Regime Sojourns Mean_Duration Median_Duration Min_Duration Max_Duration SD_Duration
@@ -512,33 +514,38 @@ plotDiag(ms_model, "all", which = 2)
 plotDiag(ms_model, "all", which = 3)
 plotProb(ms_model, which = c(1:(k_optimal + 1)))
 ```
-***Biểu đồ conditional mean theo từng regime***  
+**Biểu đồ conditional mean theo từng regime**  
 ![Biểu đồ conditional mean theo từng regime](plot/06_MS_ConMean.svg)  
 
-***
-***Biểu đồ residuals theo từng regime***  
+<br />
+
+**Biểu đồ residuals theo từng regime**  
 ![Biểu đồ residuals theo từng regime](plot/07_Resi_R1.svg)  
 ![Biểu đồ residuals theo từng regime](plot/07_Resi_R2.svg)  
 ![Biểu đồ residuals theo từng regime](plot/07_Resi_R3.svg)  
 
-***
-***Biểu đồ Q-Q theo từng regime***  
+<br />
+
+**Biểu đồ Q-Q theo từng regime**  
 ![Biểu đồ Q-Q theo từng regime](plot/08_QQ_R1.svg)  
 ![Biểu đồ Q-Q theo từng regime](plot/08_QQ_R2.svg)  
 ![Biểu đồ Q-Q theo từng regime](plot/08_QQ_R3.svg)  
 
-***
-***Biểu đồ ACF, PACF của phần dư và phần dư bình phương***  
+<br />
+
+**Biểu đồ ACF, PACF của phần dư và phần dư bình phương**  
 ![Biểu đồ ACF, PACF của phần dư và phần dư bình phương](plot/09_ACF_PACF_R1.svg)  
 ![Biểu đồ ACF, PACF của phần dư và phần dư bình phương](plot/09_ACF_PACF_R2.svg)  
 ![Biểu đồ ACF, PACF của phần dư và phần dư bình phương](plot/09_ACF_PACF_R3.svg)  
 
-***
-***Biểu đồ xác suất chuyển trạng thái filtered và smoothed theo từng regime***  
+<br />
+
+**Biểu đồ xác suất chuyển trạng thái filtered và smoothed theo từng regime**  
 ![Biểu đồ xác suất chuyển trạng thái filtered và smoothed theo từng regime](plot/10_MS_Prob.svg)  
 
-***
-***Biểu đồ gán regime từ mô hình***  
+<br />
+
+**Biểu đồ gán regime từ mô hình**  
 ![Biểu đồ gán regime từ mô hình](plot/18_Apdx_R1.svg)  
 ![Biểu đồ gán regime từ mô hình](plot/18_Apdx_R2.svg)  
 ![Biểu đồ gán regime từ mô hình](plot/18_Apdx_R3.svg)  
@@ -572,7 +579,7 @@ garch_fit <- ugarchfit(spec = garch, data = df_clean$VNINDEX_R)
 
 show(garch_fit)
 ```
-
+**Output:**
 ```
 ## *---------------------------------*
 ## *          GARCH Model Fit        *
@@ -686,7 +693,7 @@ ar_garch_fit <- ugarchfit(spec = ar_garch, data = df_clean$VNINDEX_R)
 
 show(ar_garch_fit)
 ```
-
+**Output:**
 ```
 ## *---------------------------------*
 ## *          GARCH Model Fit        *
@@ -807,7 +814,7 @@ ar_garch_x_fit <- ugarchfit(spec = ar_garch_x, data = df_clean$VNINDEX_R)
 
 show(ar_garch_x_fit)
 ```
-
+**Output:**
 ```
 ## *---------------------------------*
 ## *          GARCH Model Fit        *
@@ -943,7 +950,7 @@ ar_egarch_x_fit <- ugarchfit(spec = ar_egarch_x, data = df_clean$VNINDEX_R)
 
 show(ar_egarch_x_fit)
 ```
-
+**Output:**
 ```
 ## *---------------------------------*
 ## *          GARCH Model Fit        *
@@ -1082,7 +1089,7 @@ ar_gjr_garch_x_fit <- ugarchfit(spec = ar_gjr_garch_x, data = df_clean$VNINDEX_R
 
 show(ar_gjr_garch_x_fit)
 ```
-
+**Output:**
 ```
 ## *---------------------------------*
 ## *          GARCH Model Fit        *
@@ -1227,7 +1234,7 @@ garch_results <- arrange(garch_results, AIC, BIC, desc(logLik))
 print(garch_results)
 cat("Best-fit model:", rownames(garch_results)[1])
 ```
-
+**Output:**
 ```
 ##                              AIC       BIC   logLik
 ## AR(1)-EGARCH(1,1)-X    -6.163031 -6.144865 14203.38
@@ -1284,23 +1291,27 @@ ggplot(ni_df, aes(x = z, y = h)) +
   theme_minimal(base_size = 14)
 ```
 
-***Biểu đồ chuỗi độ biến động có điều kiện (conditional volatility)***  
+**Biểu đồ chuỗi độ biến động có điều kiện (conditional volatility)**  
 ![Biểu đồ chuỗi độ biến động có điều kiện (conditional volatility)](plot/11_EG_ConVol.svg)  
 
-***
-***Biểu đồ phần dư chuẩn hoá (standardized residuals)***  
+<br />
+
+**Biểu đồ phần dư chuẩn hoá (standardized residuals)**  
 ![Biểu đồ phần dư chuẩn hoá (standardized residuals)](plot/12_EG_StdRes.svg)  
 
-***
-***Biểu đồ Q-Q của phần dư chuẩn hóa***  
+<br />
+
+**Biểu đồ Q-Q của phần dư chuẩn hóa**  
 ![Biểu đồ Q-Q của phần dư chuẩn hóa](plot/13_EG_QQ.svg)  
 
-***
-***Biểu đồ histogram của phần dư chuẩn hóa***  
+<br />
+
+**Biểu đồ histogram của phần dư chuẩn hóa**  
 ![Biểu đồ histogram của phần dư chuẩn hóa](plot/14_EG_StdRes_Histo.svg)  
 
-***
-***Đường cong tác động thông tin (News Impact Curve)***  
+<br />
+
+**Đường cong tác động thông tin (News Impact Curve)**  
 ![Đường cong tác động thông tin (News Impact Curve)](plot/15_EG_NI.svg)  
 
 ---
@@ -1310,7 +1321,7 @@ ggplot(ni_df, aes(x = z, y = h)) +
 ols_model <- lm(VNINDEX_R ~ SP500_R + USDVND_R + BRENT_R + LNVOL + NFI_VOL, data = df_clean)
 bptest(ols_model)
 ```
-
+**Output:**
 ```
 ## 	studentized Breusch-Pagan test
 ## 
@@ -1334,7 +1345,7 @@ for (i in seq_along(taus)) {
   print(summary(qr_models[[i]], se = "boot"))
 }
 ```
-
+**Output:**
 ```
 ## --- Quantile: 0.1 ---
 ## 
@@ -1540,9 +1551,10 @@ combined_plot <- grid.arrange(grobs = plot_list, ncol = 2, top = title)
 print(combined_plot)
 ```
 
-***Biểu đồ hệ số hồi quy theo từng phân vị***  
+**Biểu đồ hệ số hồi quy theo từng phân vị**  
 ![Biểu đồ hệ số hồi quy theo từng phân vị](plot/16_QR_Cof.svg)  
 
-***
-***Biểu đồ phân phối phần dư tại các phân vị***  
+<br />
+
+**Biểu đồ phân phối phần dư tại các phân vị**  
 ![Biểu đồ phân phối phần dư tại các phân vị](plot/17_QR_ResDist.svg)  
